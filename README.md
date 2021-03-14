@@ -40,7 +40,7 @@ Esse middleware recebe o usuário já dentro do `request` e chama a função `ne
 
 Esse middleware recebe o `username` de dentro do header e o `id` de um *todo* de dentro de `request.params`. Valida o usuário, verifica se o `id` é um uuid e também valida se esse `id` pertence a um *todo* do usuário informado.
 
-Com todas as validações passando, o *todo* encontrado é passado para o `request` assim como o usuário encontrado também e a função next é chamada..
+Com todas as validações passando, o *todo* encontrado é passado para o `request` assim como o usuário encontrado também e a função next é chamada.
 
 ### findUserById
 
