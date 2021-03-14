@@ -66,7 +66,7 @@ Para que esse teste passe, no middleware `checksCreateTodosUserAvailability` dev
 
 - Should be able to let user create infinite new todos when is in Pro plan
 
-Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considere sempre que o objeto existe) da `request` e chame a função `next` caso o usuário já esteja com o plano Pro.
+Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considerando sempre que o objeto já exista) da `request` e chame a função `next` caso o usuário já esteja com o plano Pro.
 
 - Should be able to put user and todo in request when both exits
 
