@@ -7,7 +7,10 @@
   <a href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Como-executar">Como executar</a>
 </p>
-<br/>
+
+<p align="center">
+  <img alt="Ignite" src="public/ignite-2560x1080.png">
+</p>
 
 ## 📙 Desafio
 
