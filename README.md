@@ -2,9 +2,8 @@
 
 <p align="center">
   <a href="#-Projeto">Desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Rotas">Rotas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Testes-de-repositórios">Testes de repositórios</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-Testes-de-likes">Testes de likes</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Middlewares-da-aplicacão">Middlewares da aplicacão</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Testes-dos-middlewares">Testes dos middlewares</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Como-executar">Como executar</a>
 </p>
@@ -57,19 +56,48 @@ Para que esse teste passe, deve-se permitir que o middleware `checksExistsUserAc
 
 Para que esse teste passe, no middleware `checksExistsUserAccount` deve-se retornar uma resposta com status `404` caso o `username` passado pelo header da requisição não pertença a nenhum usuário. Pode também retornar uma mensagem de erro mas isso é opcional.
 
+- Should be able to let user create a new todo when is in free plan and have less than ten todos
 
+Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considere sempre que o objeto existe) da `request` e chame a função `next` somente no caso do usuário estar no **plano grátis e ainda não possuir 10 *todos* cadastrados** ou se ele **já estiver com o plano Pro ativado**.
 
-<br/><br/>
+- Should not be able to let user create a new todo when is not Pro and already have ten todos
 
-## 🔸 Testes de likes
+Para que esse teste passe, no middleware `checksCreateTodosUserAvailability` deve-se retornar uma resposta com status `403` caso o usuário recebido pela requisição esteja no **plano grátis** e **já tenha 10 *todos* cadastrados**. Pode também retornar uma mensagem de erro mas isso é opcional.
 
-- Should be able to give a like to the repository
+- Should be able to let user create infinite new todos when is in Pro plan
 
-Para que esse teste passe, deve ser possível incrementar a quantidade de likes em `1` a cada chamada na rota **POST** `/repositories/:id/like`. É utilizado o `id` passado por parâmetro na rota para realizar essa ação.
+Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considere sempre que o objeto existe) da `request` e chame a função `next` caso o usuário já esteja com o plano Pro.
 
-- Should not be able to give a like to a non existing repository
+- Should be able to put user and todo in request when both exits
 
-Para que esse teste passe, deve-se validar que um repositório existe antes de incrementar a quantidade de likes. Caso não exista, é retornado um status `404` com uma mensagem de erro no formato `{ error: "Mensagem do erro" }`.
+Para que esse teste passe, o middleware `checksTodoExists` deve receber o `username` de dentro do header e o `id` de um *todo* de dentro de `request.params`. Deve-se validar que o usuário exista, validar que o `id` seja um uuid e também validar que esse `id` pertence a um *todo* do usuário informado.
+
+Com todas as validações passando, o *todo* encontrado deve ser passado para o `request` assim como o usuário encontrado também e a função `next` deve ser chamada.
+
+É importante que seja colocado dentro de `request.user` o usuário encontrado e dentro de `request.todo` o *todo* encontrado.
+
+- Should not be able to put user and todo in request when user does not exists
+
+Para que esse teste passe, no middleware `checksTodoExists` deve-se retornar uma resposta com status `404` caso não exista um usuário com o `username` passado pelo header da requisição.
+
+- Should not be able to put user and todo in request when todo id is not uuid
+
+Para que esse teste passe, no middleware `checksTodoExists` deve-se retornar uma resposta com status `400` caso o `id` do *todo* passado pelos parâmetros da requisição não seja um UUID válido (por exemplo `1234abcd`).
+
+- Should not be able to put user and todo in request when todo does not exists
+
+Para que esse teste passe, no middleware `checksTodoExists` deve-se retornar uma resposta com status `404` caso o `id` do *todo* passado pelos parâmetros da requisição não pertença a nenhum *todo* do usuário encontrado.
+
+- Should be able to find user by id route param and pass it to request.user
+
+Para que esse teste passe, o middleware `findUserById` deve receber o `id` de um usuário de dentro do `request.params`. Deve-se validar que o usuário exista, repassar ele para `request.user` e retornar a chamada da função `next`.
+
+- Should not be able to pass user to request.user when it does not exists
+
+Para que esse teste passe, no middleware `findUserById` deve-se retornar uma resposta com status `404` caso o `id` do usuário passado pelos parâmetros da requisição não pertença a nenhum usuário cadastrado.
+
+---
+Todos os demais testes são os mesmos testes encontrados no desafio 01 com algumas (ou nenhuma) mudanças.
 <br/><br/>
 
 ## 💻 Tecnologias
