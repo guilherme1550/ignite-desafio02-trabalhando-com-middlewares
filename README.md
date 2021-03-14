@@ -58,7 +58,7 @@ Para que esse teste passe, no middleware `checksExistsUserAccount` deve-se retor
 
 - Should be able to let user create a new todo when is in free plan and have less than ten todos
 
-Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considere sempre que o objeto existe) da `request` e chame a função `next` somente no caso do usuário estar no **plano grátis e ainda não possuir 10 *todos* cadastrados** ou se ele **já estiver com o plano Pro ativado**.
+Para que esse teste passe, deve-se permitir que o middleware `checksCreateTodosUserAvailability` receba o objeto `user` (considerando que o objeto já exista) da `request` e chame a função `next` somente no caso do usuário estar no **plano grátis e ainda não possuir 10 *todos* cadastrados** ou se ele **já estiver com o plano Pro ativado**.
 
 - Should not be able to let user create a new todo when is not Pro and already have ten todos
 
