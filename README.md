@@ -117,6 +117,7 @@ Essa aplicacão foi desenvolvida com as seguintes tecnologias:
 - Instale as dependências com `yarn`
 - Inicie o servidor com `yarn dev`
 - Utilize o Insomnia ou algum outro programa semelhante para realizar as requisicões.
+- Rode os testes com `yarn test`
 
 ---
 
