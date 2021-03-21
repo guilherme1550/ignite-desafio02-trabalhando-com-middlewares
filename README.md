@@ -105,7 +105,7 @@ Todos os demais testes são os mesmos testes encontrados no desafio 01 com algum
 
 ## 💻 Tecnologias
 
-Essa aplicacão foi desenvolvido com as seguintes tecnologias:
+Essa aplicacão foi desenvolvida com as seguintes tecnologias:
 
 - [Express](https://expressjs.com/pt-br/)
 - [Jest](https://jestjs.io/)
@@ -115,7 +115,8 @@ Essa aplicacão foi desenvolvido com as seguintes tecnologias:
 
 - Clone o repositório
 - Instale as dependências com `yarn`
-- Rode os testes com `yarn test`
+- Inicie o servidor com `yarn dev`
+- Utilize o Insomnia ou algum outro programa semelhante para realizar as requisicões.
 
 ---
 
